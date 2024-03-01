@@ -1,0 +1,46 @@
+<!-- templates/custom_home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #ff008c; /* Set your desired color */
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Regex Tester and Email Validation Application</h1>
+    <ul>
+        <li><a href="{{ url_for('custom_regex_tester') }}">Regex Tester</a></li>
+        <li><a href="{{ url_for('custom_email_validation') }}">Email Validation</a></li>
+    </ul>
+</body>
+</html>

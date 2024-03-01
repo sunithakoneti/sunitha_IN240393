@@ -1,0 +1,100 @@
+<!-- templates/custom_regex_tester.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regex Tester</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #ff008c;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #333;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #d4edda;
+            margin: 8px 0;
+            padding: 8px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Regex Tester</h1>
+    <form class="form-container" method="post" action="{{ url_for('custom_regex_tester') }}">
+        <label for="test_string">Test String:</label>
+        <textarea id="test_string" name="test_string" rows="4" cols="50" required></textarea>
+        <br>
+        <label for="regex_pattern">Regex Pattern:</label>
+        <input type="text" id="regex_pattern" name="regex_pattern" required>
+        <br>
+        <input type="submit" value="Test Regex">
+    </form>
+    
+    {% if test_string and regex_pattern %}
+        {% if matches %}
+            <h2>Results:</h2>
+            <p>Test String: {{ test_string }}</p>
+            <p>Regex Pattern: {{ regex_pattern }}</p>
+            <p>Matches:</p>
+            <ul>
+                {% for match in matches %}
+                    <li>{{ match }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No matches found for the given pattern.</p>
+        {% endif %}
+    {% endif %}
+    
+    <!-- Link to go back to the home page -->
+    <p><a href="{{ url_for('custom_home') }}">Go back to Home</a></p>
+</body>
+</html>
